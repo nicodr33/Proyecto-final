@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/home.css">
+    <title>MALU ~ Madera Lúdica ~</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/MALU.png" alt="Madera lúdica" height="5">
+        </div>
+        <div class="navbar">
+            <a href="index.html" class="nav-elem">Home</a>
+            <a href="products.html" class="nav-elem">Productos</a>
+            <a href="nosotros.html" class="nav-elem">Quienes somos?</a>
+            <a href="contacto.html" class="nav-elem">Contacto</a>
+            <a href="menu.html" class="nav-elem">Login</a>
+        </div>
+    </header>
+    <main>
+        <h2 class="bienvenida">¿Querés saber de nosotros?</h2>
+        <br><br>
+        <p class="nos"> Somos Lau y Lucas, docentes y familia! Juntos creamos Malu para ofrecerles distintos juegos para que nuestros chicos puedan jugar, divertirse y aprender con seguridad y en contacto de materiales naturales.</p>
+        <p class="nos"> Todos nuestros productos son ideales para jugar en casa, y también para usar en jardines y consultorios.</p>
+        <p class="nos"> Hacemos todo a mano, buscando ofrecerles productos de gran calidad y seguros. Tenemos un stock mínimo de todo, y en caso de que no lo tengamos, te lo preparamos a pedido</p>
+        <p class="nos"> Podes personalizarlos ya sea eligiendo los colores que más te gusten o con el nombre que quieras</p>
+        
+        <br>
+
+        <div class="usu">
+            <button onclick="traerDatos()">Ver Usuarios Satisfechos!</button>
+            <div id="usuarios"> </div>
+        </div>
+
+
+        <script>
+            var usuarios = document.querySelector('#usuarios')
+                function traerDatos() {
+                fetch('https://randomuser.me/api')
+                    .then(res => res.json())
+                    .then(res => {
+                        usuarios.innerHTML= `
+                        <br>
+                        <img src="${res.results[0].picture.large}" width="100px">
+                        <p>Nombre: ${res.results[0].name.first}</p>
+                        `
+                    })
+                    .catch(error => console.log("Ocurrió un error", error)) // si hay un error será atrapado por catch
+                }
+        </script>
+
+
+
+
+
+
+        <!-- <script src="JS/script.js"></script> -->
+    </main>
+
+    <footer>
+        <div class="contenedorfooter">
+            <div class="foot">
+                <h3>Seguinos</h3>
+                <br>
+                <a href="https://www.instagram.com/malu.enmadera/" target="_blank"><img src="img/instagram.png"
+                        width="50" height="50" alt="instagram malu"></a>
+            </div>
+            <div class="foot">
+                <h4>Categorías</h4>
+                <br>
+                <ul>
+                    <li><a href="index.html" class="footer-link">Home</a></li>
+                    <li><a href="products.html" class="footer-link">Productos</a></li>
+                    <li><a href="nosotros.html" class="footer-link">Quienes somos?</a></li>
+                    <li><a href="contacto.html" class="footer-link">Contacto</a></li>
+                </ul>
+
+
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
